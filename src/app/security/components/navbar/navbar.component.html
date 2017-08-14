@@ -1,0 +1,8 @@
+<nav>
+  <div class="nav-wrapper cyan accent-4">
+    <a href="#" class="brand-logo">{{options.logo}}</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down" *ngFor="let link of options.links">
+      <li><a routerLink="{{link.href}}">{{link.name}}</a></li>
+    </ul>
+  </div>
+</nav>
