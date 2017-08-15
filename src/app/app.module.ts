@@ -6,6 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
 
+//config
+import { CONFIG } from './config/config'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +17,7 @@ import { HomeComponent } from './views/home/home.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SecurityModule
+    SecurityModule.forRoot(CONFIG)
   ],
   providers: [],
   bootstrap: [AppComponent]

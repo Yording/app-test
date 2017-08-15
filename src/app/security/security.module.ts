@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { SecurityRoutingModule } from './security-routing.module';
@@ -21,7 +21,7 @@ import { AuthenticationComponent } from './views/authentication/authentication.c
 import { AuthorizationComponent } from './views/authorization/authorization.component';
 
 // Services
-import  { ConfigService } from './services/config.service'
+import  { ConfigService,Config } from './services/config.service'
 import  { PermissionService } from './services/permission.service'
 import  { ActionService } from './services/action.service'
 import  { RoleService } from './services/role.service'
@@ -59,7 +59,25 @@ import  { UserService } from './services/user.service'
     ActionService,
     RoleService,
     ResourceService,
-    UserService
+    UserService,
+    ConfigService
   ]
 })
-export class SecurityModule { }
+export class SecurityModule {
+  constructor (@Optional() @SkipSelf() parentModule: SecurityModule) {
+    if (parentModule) {
+      throw new Error(
+        'SecurityModule is already loaded. Import it in the AppModule only');
+    }
+  }
+
+  // Esta Clase recibo todas las configuraciones para el module
+  static forRoot(configModule: object): ModuleWithProviders {
+    return {
+      ngModule: SecurityModule,
+      providers: [
+        {provide: Config, useValue: configModule }
+      ]
+    };
+  }
+}

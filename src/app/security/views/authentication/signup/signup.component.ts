@@ -1,6 +1,7 @@
 import { Component, OnInit, Input,Attribute } from '@angular/core';
 
-// services
+// Services
+import { ConfigService } from '../../../services/config.service'
 
 
 @Component({
@@ -11,30 +12,14 @@ import { Component, OnInit, Input,Attribute } from '@angular/core';
 export class SignupComponent implements OnInit {
   
   // Inputs
-  public options:object
+  private options:object
 
-  constructor() { 
-    // Inicializar las propiedades de la vista signUp
-    this.options = {
-      fields:[
-        {
-          name: 'Name'
-        },
-        {
-          name: 'Phone'
-        },
-        {
-          name: 'Email'
-        }
-      ]
-    }
+  constructor(configService: ConfigService) { 
+    // Inicializar las propiedades recibidas desde el modulo principal
+    this.options = configService.getConfig['signUpOpts']
   }
-  // static config(config: object) {
-  //   console.log(config)
-  //   // this.configService(config)
-  // }
+ 
   ngOnInit() {
-    console.log(this.options)
   }
 
 }

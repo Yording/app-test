@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+// // Services
+// import { ConfigService } from '../../services/config.service'
+
+
 @Component({
   selector: 'security-authorization',
   templateUrl: './authorization.component.html',
@@ -9,7 +13,7 @@ export class AuthorizationComponent implements OnInit {
   
   // Attributes
   private menuOpt:object
-  title: string = 'Project Center';
+  config: string = '';
   
   constructor() { 
     // Se inicializa un objeto para configurar el navbar para la authorization
