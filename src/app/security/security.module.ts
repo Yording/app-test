@@ -17,6 +17,16 @@ import { CreateRolesComponent } from './views/authorization/roles/create-roles/c
 import { CreatePermissionComponent } from './views/authorization/permissions/create-permission/create-permission.component';
 import { ListPermissionsComponent } from './views/authorization/permissions/list-permissions/list-permissions.component';
 import { TableComponent } from './components/table/table.component';
+import { AuthenticationComponent } from './views/authentication/authentication.component';
+import { AuthorizationComponent } from './views/authorization/authorization.component';
+
+// Services
+import  { ConfigService } from './services/config.service'
+import  { PermissionService } from './services/permission.service'
+import  { ActionService } from './services/action.service'
+import  { RoleService } from './services/role.service'
+import  { ResourceService } from './services/resource.service'
+import  { UserService } from './services/user.service'
 
 @NgModule({
   imports: [
@@ -36,7 +46,20 @@ import { TableComponent } from './components/table/table.component';
     CreateRolesComponent,
     CreatePermissionComponent,
     ListPermissionsComponent,
-    TableComponent
+    TableComponent,
+    AuthenticationComponent,
+    AuthorizationComponent
+  ],
+  exports: [
+    AuthenticationComponent,
+    AuthorizationComponent
+  ],
+  providers: [
+    PermissionService,
+    ActionService,
+    RoleService,
+    ResourceService,
+    UserService
   ]
 })
 export class SecurityModule { }

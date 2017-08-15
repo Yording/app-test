@@ -2,14 +2,8 @@
   <h3 class="center-align">Sign Up</h3>
   <div id="form-signup">
     <div class="row">
-      <div class="input-field col s10 offset-s1">
-        <input type="text" placeholder="Name">
-      </div>
-      <div class="input-field col s10 offset-s1">
-        <input type="text" placeholder="Phone">
-      </div>
-      <div class="input-field col s10 offset-s1">
-        <input type="text" placeholder="Email">
+      <div class="input-field col s10 offset-s1" *ngFor="let field of options.fields">
+        <input type="text" placeholder="{{field.name}}">
       </div>
     </div>
     <div class="row">

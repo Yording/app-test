@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input,Attribute } from '@angular/core';
+
+// services
+
 
 @Component({
   selector: 'app-signup',
@@ -6,10 +9,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  
+  // Inputs
+  public options:object
 
-  constructor() { }
-
+  constructor() { 
+    // Inicializar las propiedades de la vista signUp
+    this.options = {
+      fields:[
+        {
+          name: 'Name'
+        },
+        {
+          name: 'Phone'
+        },
+        {
+          name: 'Email'
+        }
+      ]
+    }
+  }
+  // static config(config: object) {
+  //   console.log(config)
+  //   // this.configService(config)
+  // }
   ngOnInit() {
+    console.log(this.options)
   }
 
 }

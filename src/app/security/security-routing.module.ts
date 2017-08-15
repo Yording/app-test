@@ -15,16 +15,27 @@ import { ListPermissionsComponent } from './views/authorization/permissions/list
 
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent },
-  { path: 'create-resource', component: CreateResourceComponent },
-  { path: 'list-resources', component: ListResourcesComponent },
-  { path: 'create-action', component: CreateActionComponent },
-  { path: 'list-actions', component: ListActionsComponent },
-  { path: 'create-role', component: CreateRolesComponent },
-  { path: 'list-roles', component: ListRolesComponent },
-  { path: 'create-permission', component: CreatePermissionComponent },
-  { path: 'list-permissions', component: ListPermissionsComponent },
+  { path: 'authentication',
+    children: [
+       { path: 'login', component: LoginComponent },
+       { path: 'signup', component: SignupComponent },
+    ]
+  },
+  {
+    path: 'authorization',
+    children: [
+       { path: 'create-resource', component: CreateResourceComponent },
+       { path: 'list-resources', component: ListResourcesComponent },
+       { path: 'create-action', component: CreateActionComponent },
+       { path: 'list-actions', component: ListActionsComponent },
+       { path: 'create-role', component: CreateRolesComponent },
+       { path: 'list-roles', component: ListRolesComponent },
+       { path: 'create-permission', component: CreatePermissionComponent },
+       { path: 'list-permissions', component: ListPermissionsComponent },
+    ]
+  }
+  
+  
 ];
 
 @NgModule({

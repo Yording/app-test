@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-declare var $:any;
+// Components
+import { TableComponent } from '../../../../components/table/table.component'
+
+// services
+import { ResourceService } from '../../../../services/resource.service';
+import { Resource } from '../../../../models/resource.model';
 
 @Component({
   selector: 'app-list-resources',
@@ -9,10 +14,12 @@ declare var $:any;
 })
 export class ListResourcesComponent implements OnInit {
 
-  constructor() { }
+  resouce: Resource[]
+  
+  constructor(private resourceService: ResourceService) { }
 
   ngOnInit() {
-    $('.modal').modal();
+    this.resouce = this.resourceService.getResource()
   }
 
 
