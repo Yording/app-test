@@ -15,7 +15,7 @@ export class TableComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.records,this.caption)
+    
   }
 
   ngOnChanges() {

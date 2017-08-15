@@ -11,7 +11,7 @@ export class CreateResourceComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    $('select').material_select();
+
   }
 
 }

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-declare var $:any
+// declare var $:anys
 
 @Component({
   selector: 'app-create-permission',
   templateUrl: './create-permission.component.html',
-  styleUrls: ['./create-permission.component.css']
+  styleUrls: ['./create-permission.component.css'],
 })
 export class CreatePermissionComponent implements OnInit {
 
@@ -13,7 +13,7 @@ export class CreatePermissionComponent implements OnInit {
 
   ngOnInit() {
     // Inicializo la etiqueta select usada con materialize
-    $('select').material_select();
+    // $('select').material_select();
   }
 
 }

@@ -1,25 +1,25 @@
 <div class="container">
-  <h3>Create Resource</h3>
+  <h3>Create Permission</h3>
   <hr>
   <div class="row">
-    <div class="input-field col s12 m4">
-      <select>
+    <div class="form-group col-xs-12 col-md-4">
+      <select class="form-control">
         <option value="" disabled selected>Select User</option>
         <option value="1">yording</option>
         <option value="2">maria</option>
         <option value="3">antonia</option>
       </select>
     </div>
-    <div class="input-field col s12 m4">
-      <select>
+    <div class="form-group col-xs-12 col-md-4">
+      <select class="form-control">
         <option value="" disabled selected>Select Role</option>
         <option value="1">editor</option>
         <option value="2">lector</option>
         <option value="3">admin</option>
       </select>
     </div>
-    <div class="input-field col s12 m4">
-      <select>
+    <div class="form-group col-xs-12 col-md-4">
+      <select class="form-control">
         <option value="" disabled selected>Select Resource</option>
         <option value="1">módule venta</option>
         <option value="2">módulo compras</option>
@@ -27,6 +27,6 @@
       </select>
     </div>
   </div>
-  <button class="btn waves-effect-waves-light green darken-1">Create</button>
-  <button class="btn waves-effect-waves-light orange darken-1">View List</button>
+  <button class="btn btn-success">Create</button>
+  <a class="btn btn-warning" routerLink="/authorization/list-permissions">View List</a>
 </div>
