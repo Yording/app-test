@@ -1,5 +1,5 @@
 export class Action { 
-    id: number;
-    action: string;
+    id_action: number;
+    action1: string;
     description?: string
 }

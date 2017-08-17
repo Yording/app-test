@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Action } from '../../../../models/action.model'
+import { ActionService } from '../../../../services/action.service'
 
 @Component({
   selector: 'app-create-action',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateActionComponent implements OnInit {
 
-  constructor() { }
+  private action: Action
+
+  constructor(private actionService: ActionService) { 
+    this.action =  <Action>{}
+  }
 
   ngOnInit() {
+  }
+
+  crearAction(){
+    console.log("click",this.action)
+    this.actionService.createAction(this.action)
   }
 
 }

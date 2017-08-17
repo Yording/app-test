@@ -1,7 +1,7 @@
 export class Resource { 
-    id: number;
-    name: string;
-    parent: string;
+    id_resource: number;
+    resource1: string;
+    parent: any;
     hereditary: boolean;
     description?:string;
 }

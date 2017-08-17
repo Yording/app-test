@@ -12,6 +12,7 @@ import { CreateRolesComponent} from './views/authorization/roles/create-roles/cr
 import { ListRolesComponent } from './views/authorization/roles/list-roles/list-roles.component'
 import { CreatePermissionComponent } from './views/authorization/permissions/create-permission/create-permission.component'
 import { ListPermissionsComponent } from './views/authorization/permissions/list-permissions/list-permissions.component'
+import { AdminLoginComponent } from './views/authorization/admin-login/admin-login.component'
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
   {
     path: 'authorization',
     children: [
+       { path: '', component: AdminLoginComponent},
        { path: 'create-resource', component: CreateResourceComponent },
        { path: 'list-resources', component: ListResourcesComponent },
        { path: 'create-action', component: CreateActionComponent },

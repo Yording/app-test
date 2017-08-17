@@ -1,5 +1,6 @@
 import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { SecurityRoutingModule } from './security-routing.module';
 
@@ -19,6 +20,7 @@ import { ListPermissionsComponent } from './views/authorization/permissions/list
 import { TableComponent } from './components/table/table.component';
 import { AuthenticationComponent } from './views/authentication/authentication.component';
 import { AuthorizationComponent } from './views/authorization/authorization.component';
+import { AdminLoginComponent } from './views/authorization/admin-login/admin-login.component'
 
 // Services
 import  { ConfigService,Config } from './services/config.service'
@@ -26,11 +28,13 @@ import  { PermissionService } from './services/permission.service'
 import  { ActionService } from './services/action.service'
 import  { RoleService } from './services/role.service'
 import  { ResourceService } from './services/resource.service'
-import  { UserService } from './services/user.service'
+import  { UserService } from './services/user.service';
+
 
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     SecurityRoutingModule
   ],
   declarations: [
@@ -48,7 +52,8 @@ import  { UserService } from './services/user.service'
     ListPermissionsComponent,
     TableComponent,
     AuthenticationComponent,
-    AuthorizationComponent
+    AuthorizationComponent,
+    AdminLoginComponent
   ],
   exports: [
     AuthenticationComponent,

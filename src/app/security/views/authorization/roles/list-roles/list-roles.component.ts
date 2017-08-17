@@ -14,12 +14,25 @@ import { Role } from '../../../../models/role.model';
 })
 export class ListRolesComponent implements OnInit {
 
-  role: Role[]
+  roles: Role[]
 
   constructor(private roleService: RoleService) { }
 
   ngOnInit() {
-    this.role = this.roleService.getRole()
+    // Se retorna todo los roles que envia la api
+    this.roleService.getRoles()
+      .then(data => {
+          // se obtiene la respuesta en la variable response
+          var response = data["value"]
+  
+          // Se realiza un mapeo de las caracteristicas que se mostraran en la lista
+          this.roles = response.map(function(ele){
+            return {
+              Id: ele["id_role"],
+              Role: ele["role1"],
+            }
+          })
+      });
   }
 
 }

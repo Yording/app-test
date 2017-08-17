@@ -6,88 +6,88 @@ import { Resource } from './resource.model';
 
 export const PERMISSIONS: Permission[] = [
     {
-        id: 1,
-        recurso: 'Módulo Ventas',
-        usuario: 'Yording',
+        id_permission: 1,
+        resource: 'Módulo Ventas',
+        user: 'Yording',
         role: 'Admin'
     },
     {
-        id: 2,
-        recurso: 'Módulo Compras',
-        usuario: 'Yording',
+        id_permission: 2,
+        resource: 'Módulo Compras',
+        user: 'Yording',
         role: 'Editor'
     },
     {
-        id: 3,
-        recurso: 'Módulo Facturación',
-        usuario: 'Cesar',
+        id_permission: 3,
+        resource: 'Módulo Facturación',
+        user: 'Cesar',
         role: 'Admin'
     },
     {
-        id: 4,
-        recurso: 'Vista dashboard',
-        usuario: 'Angela',
+        id_permission: 4,
+        resource: 'Vista dashboard',
+        user: 'Angela',
         role: 'Restringuido'
     }
 ];
 export const ACTIONS: Action[] = [
     {
-        id: 1,
-        action: 'Editar',
+        id_action: 1,
+        action1: 'Editar',
     },
     {
-        id: 2,
-        action: 'Crear',
+        id_action: 2,
+        action1: 'Crear',
     },
     {
-        id: 3,
-        action: 'Eliminar',
+        id_action: 3,
+        action1: 'Eliminar',
     },
     {
-        id: 4,
-        action: 'Consultar',
+        id_action: 4,
+        action1: 'Consultar',
     }
 ];
 export const ROLES: Role[] = [
     {
-        id: 1,
-        role: 'Admin',
+        id_role: 1,
+        role1: 'Admin',
     },
     {
-        id: 2,
-        role: 'Editor',
+        id_role: 2,
+        role1: 'Editor',
     },
     {
-        id: 3,
-        role: 'Creador',
+        id_role: 3,
+        role1: 'Creador',
     },
     {
-        id: 4,
-        role: 'Restringuido',
+        id_role: 4,
+        role1: 'Restringuido',
     }
 ];
 export const RESOURCES: Resource[] = [
     {
-        id: 1,
-        name: 'Módulo Ventas',
+        id_resource: 1,
+        resource1: 'Módulo Ventas',
         parent: '0',
         hereditary: false
     },
     {
-        id: 2,
-        name: 'Módulo Compras',
+        id_resource: 2,
+        resource1: 'Módulo Compras',
         parent: '0',
         hereditary: true
     },
     {
-        id: 3,
-        name: 'Módulo Facturación',
+        id_resource: 3,
+        resource1: 'Módulo Facturación',
         parent: '2',
         hereditary: false
     },
     {
-        id: 4,
-        name: 'Vista dashboard',
+        id_resource: 4,
+        resource1: 'Vista dashboard',
         parent: '1',
         hereditary: true
     }

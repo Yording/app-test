@@ -14,12 +14,27 @@ import { Action } from '../../../../models/action.model';
 })
 export class ListActionsComponent implements OnInit {
 
-  action: Action[];
+  actions: Action[];
 
-  constructor(private actionService: ActionService) { }
+  constructor(private actionService: ActionService) {
+    
+   }
 
   ngOnInit() {
-    this.action = this.actionService.getAction();
+    // Se retorna todo las aciones que envia la api
+    this.actionService.getActions()
+      .then(data => {
+          // se obtiene la respuesta en la variable response
+          var response = data["value"]
+
+          // Se realiza un mapeo de las caracteristicas que se mostraran en la lista
+          this.actions = response.map(function(ele){
+            return {
+              Id: ele["id_action"],
+              Action: ele["action1"]
+            }
+          })
+      });
   }
 
 }

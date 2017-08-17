@@ -14,12 +14,27 @@ import { Resource } from '../../../../models/resource.model';
 })
 export class ListResourcesComponent implements OnInit {
 
-  resouce: Resource[]
+  resources: Resource[]
   
   constructor(private resourceService: ResourceService) { }
 
   ngOnInit() {
-    this.resouce = this.resourceService.getResource()
+    // Se retorna todo los recursos que envia la api
+    this.resourceService.getResources()
+      .then(data => {
+          // se obtiene la respuesta en la variable response
+          var response = data["value"]
+  
+          // Se realiza un mapeo de las caracteristicas que se mostraran en la lista
+          this.resources = response.map(function(ele){
+            return {
+              Id: ele["id_resource"],
+              Resource: ele["resource1"],
+              Parent: ele["parent"],
+              Hereditary: ele["hereditary"]
+            }
+          })
+      });
   }
 
 

@@ -15,10 +15,12 @@ export class TableComponent implements OnInit, OnChanges {
   constructor() { }
 
   ngOnInit() {
-    
   }
 
   ngOnChanges() {
-        this.keys = Object.keys(this.records[0]);
+    if(this.records != undefined){
+      this.keys = Object.keys(this.records[0]);
+    }
+    
   }
 }

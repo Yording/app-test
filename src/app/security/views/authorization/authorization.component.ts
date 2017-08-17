@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 // // Services
-// import { ConfigService } from '../../services/config.service'
+import { ConfigService } from '../../services/config.service'
 
 
 @Component({
@@ -15,10 +15,10 @@ export class AuthorizationComponent implements OnInit {
   private menuOpt:object
   config: string = '';
   
-  constructor() { 
+  constructor(private configService: ConfigService) { 
     // Se inicializa un objeto para configurar el navbar para la authorization
     this.menuOpt = {
-      logo: 'Empresa',
+      logo: this.configService.getConfig["logo"],
       links: [
         { name: 'Resources', href: 'authorization/create-resource'},
         { name: 'Actions', href: 'authorization/create-action'},

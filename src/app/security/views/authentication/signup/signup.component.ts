@@ -16,7 +16,7 @@ export class SignupComponent implements OnInit {
 
   constructor(configService: ConfigService) { 
     // Inicializar las propiedades recibidas desde el modulo principal
-    this.options = configService.getConfig['signUpOpts']
+    this.options = configService.getConfig["authentication"]['signUpOpts']
   }
  
   ngOnInit() {
