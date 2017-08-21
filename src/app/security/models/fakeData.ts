@@ -94,25 +94,25 @@ export const RESOURCES: Resource[] = [
 ];
 export const USERS: User[] = [
     {
-        id: 1,
+        id_user: 1,
         name: 'Yording',
         phone: '3423432',
         email: 'yording@gmail.com'
     },
     {
-        id: 1,
+        id_user: 1,
         name: 'Pedro',
         phone: '3482934',
         email: 'pedro@gmail.com'
     },
     {
-        id: 1,
+        id_user: 1,
         name: 'Angela',
         phone: '74832478233',
         email: 'angela@gmail.com'
     },
     {
-        id: 1,
+        id_user: 1,
         name: 'Carlos',
         phone: '342342',
         email: 'carlos@gmail.com'

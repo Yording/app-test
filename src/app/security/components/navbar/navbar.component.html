@@ -14,7 +14,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right" *ngFor="let link of options.links">
-        <li><a routerLink="{{link.href}}">{{link.name}}</a></li>
+        <li *ngIf="(link.module == 'authorization' && isLogged)  || (link.module == 'authentication')"><a routerLink="{{link.href}}">{{link.name}}</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

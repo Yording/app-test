@@ -2,11 +2,11 @@
   <div class="row">
     <div class="col-xs-12 col-md-6 col-md-offset-3" align="center">
         <h3 class="text-center">Login Social</h3>
-        <button type="" class="btn btn-danger">
+        <button type="" class="btn btn-danger" (click)="userService.login()">
           <i class="fa fa-google"></i>
           Login with Google
         </button>
-        <button class="btn btn-primary">
+        <button class="btn btn-primary" (click)="userService.login()">
           <i class="fa fa-facebook"></i>
           Login with Facebook
         </button>
@@ -24,7 +24,7 @@
   <div class="row">
     <div class="col-xs-12 col-md-6 col-md-offset-3" align="center">
       <h3>Login Enterprise</h3>
-      <button class="btn btn-info">
+      <button class="btn btn-info" (click)="userService.login()">
         <i class="fa fa-windows"></i>
          Login with Microsoft Azure AD
       </button>

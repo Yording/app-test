@@ -3,30 +3,24 @@
   <hr>
   <div class="row">
     <div class="form-group col-xs-12 col-md-4">
-      <select class="form-control">
-        <option value="" disabled selected>Select User</option>
-        <option value="1">yording</option>
-        <option value="2">maria</option>
-        <option value="3">antonia</option>
+      <select class="form-control" [(ngModel)]="user">
+        <option disabled selected [ngValue]="user">Select User</option>
+        <option *ngFor="let user of users" [ngValue]="user">{{user.user}}</option>
       </select>
     </div>
     <div class="form-group col-xs-12 col-md-4">
-      <select class="form-control">
-        <option value="" disabled selected>Select Role</option>
-        <option value="1">editor</option>
-        <option value="2">lector</option>
-        <option value="3">admin</option>
+      <select class="form-control" [(ngModel)]="role">
+        <option disabled selected [ngValue]="role">Select Role</option>
+        <option *ngFor="let role of roles" [ngValue]="role">{{role.role}}</option>
       </select>
     </div>
     <div class="form-group col-xs-12 col-md-4">
-      <select class="form-control">
-        <option value="" disabled selected>Select Resource</option>
-        <option value="1">módule venta</option>
-        <option value="2">módulo compras</option>
-        <option value="3">módulo facturación</option>
+      <select class="form-control" [(ngModel)]="resource">
+        <option disabled selected [ngValue]="resource">Select Resource</option>
+        <option *ngFor="let resource of resources" [ngValue]="resource">{{resource.resource}}</option>
       </select>
     </div>
   </div>
-  <button class="btn btn-success">Create</button>
+  <button class="btn btn-success" (click)="createPermission()">Create</button>
   <a class="btn btn-warning" routerLink="/authorization/list-permissions">View List</a>
 </div>

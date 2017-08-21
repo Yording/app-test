@@ -10,7 +10,7 @@ export class ResourceService {
     private port: number
 
     constructor(configService: ConfigService){
-        var api = configService.getConfig["authentication"]["apiSecurity"]
+        var api = configService.getConfig["apiSecurity"]
         this.host = api["host"] || 'localhost'
         this.port = api["port"] || '3000'
     }

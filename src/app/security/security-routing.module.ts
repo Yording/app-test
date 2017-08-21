@@ -13,11 +13,19 @@ import { ListRolesComponent } from './views/authorization/roles/list-roles/list-
 import { CreatePermissionComponent } from './views/authorization/permissions/create-permission/create-permission.component'
 import { ListPermissionsComponent } from './views/authorization/permissions/list-permissions/list-permissions.component'
 import { AdminLoginComponent } from './views/authorization/admin-login/admin-login.component'
+import { CreateRolesByActionsComponent } from './views/authorization/roles-by-actions/create-roles-by-actions/create-roles-by-actions.component';
+import { ListRolesByActionsComponent } from './views/authorization/roles-by-actions/list-roles-by-actions/list-roles-by-actions.component';
+import { CallbackComponent } from './components/callback/callback.component';
+
+// Guards
+import { AuthAdminGuard } from './guards/auth-admin.guard';
 
 
 const routes: Routes = [
+  { path: 'callback', component: CallbackComponent },
   { path: 'authentication',
     children: [
+       { path:'', pathMatch: 'full', redirectTo: 'login' },
        { path: 'login', component: LoginComponent },
        { path: 'signup', component: SignupComponent },
     ]
@@ -25,15 +33,18 @@ const routes: Routes = [
   {
     path: 'authorization',
     children: [
-       { path: '', component: AdminLoginComponent},
-       { path: 'create-resource', component: CreateResourceComponent },
-       { path: 'list-resources', component: ListResourcesComponent },
-       { path: 'create-action', component: CreateActionComponent },
-       { path: 'list-actions', component: ListActionsComponent },
-       { path: 'create-role', component: CreateRolesComponent },
-       { path: 'list-roles', component: ListRolesComponent },
-       { path: 'create-permission', component: CreatePermissionComponent },
-       { path: 'list-permissions', component: ListPermissionsComponent },
+       { path:'', pathMatch: 'full', redirectTo: 'login' },
+       { path: 'login', component: AdminLoginComponent },
+       { path: 'create-resource', component: CreateResourceComponent, canActivate:[AuthAdminGuard] },
+       { path: 'list-resources', component: ListResourcesComponent, canActivate:[AuthAdminGuard] },
+       { path: 'create-action', component: CreateActionComponent, canActivate:[AuthAdminGuard] },
+       { path: 'list-actions', component: ListActionsComponent, canActivate:[AuthAdminGuard] },
+       { path: 'create-role', component: CreateRolesComponent, canActivate:[AuthAdminGuard] },
+       { path: 'list-roles', component: ListRolesComponent, canActivate:[AuthAdminGuard] },
+       { path: 'create-permission', component: CreatePermissionComponent, canActivate:[AuthAdminGuard] },
+       { path: 'list-permissions', component: ListPermissionsComponent, canActivate:[AuthAdminGuard] },
+       { path: 'assigns-actions-to-roles', component: CreateRolesByActionsComponent, canActivate:[AuthAdminGuard] },
+       { path: 'list-roles-by-actions', component: ListRolesByActionsComponent, canActivate:[AuthAdminGuard] }
     ]
   }
   
@@ -42,6 +53,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthAdminGuard]
 })
 export class SecurityRoutingModule { }

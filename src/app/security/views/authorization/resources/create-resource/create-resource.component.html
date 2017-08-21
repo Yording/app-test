@@ -5,13 +5,20 @@
     <div class="form-group col-xs-12 col-md-8">
       <input type="text" class="form-control" placeholder="Name Resource" [(ngModel)]="resource.resource1">
     </div>
-    <div class="form-group col-xs-12 col-md-4">
-      <select class="form-control">
-         <option value="" disabled selected>Select Parent</option> 
-        <option value="{{resource.id}}" *ngFor="let resource of resources">{{resource.resource}}</option>
-        <!-- <option value="2">módulo compras</option>
-        <option value="3">módulo facturación</option> -->
+    <div class="form-group col-xs-8 col-md-2">
+      <select class="form-control" [(ngModel)]="resource.parent">
+         <option disabled selected [ngValue]="resource.parent">Select Parent</option> 
+        <option *ngFor="let resource of resources" [ngValue]="resource.id">{{resource.resource}}</option>
       </select>
+    </div>
+    <div class="form-group">
+      <div class="form-group col-xs-4 col-md-2">
+        <div class="checkbox">
+          <label>
+          <input type="checkbox" [disabled]="!resource.parent" [checked]="resource.hereditary" (change)="resource.hereditary = !resource.hereditary"> Hereditary
+        </label>
+        </div>
+      </div>
     </div>
     <div class="form-group col-xs-12 col-md-12">
       <textarea class="form-control" placeholder="Description" [(ngModel)]="resource.description"></textarea>

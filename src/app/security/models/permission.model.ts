@@ -3,7 +3,7 @@ export class Permission {
     resource?: string;
     user?: string;
     role?: string;
-    id_resource?: string;
-    id_user?: string;
-    id_role?: string;
+    id_resource?: number;
+    id_user?: number;
+    id_role?: number;
 }

@@ -21,6 +21,9 @@ import { TableComponent } from './components/table/table.component';
 import { AuthenticationComponent } from './views/authentication/authentication.component';
 import { AuthorizationComponent } from './views/authorization/authorization.component';
 import { AdminLoginComponent } from './views/authorization/admin-login/admin-login.component'
+import { CreateRolesByActionsComponent } from './views/authorization/roles-by-actions/create-roles-by-actions/create-roles-by-actions.component';
+import { ListRolesByActionsComponent } from './views/authorization/roles-by-actions/list-roles-by-actions/list-roles-by-actions.component';
+import { CallbackComponent } from './components/callback/callback.component';
 
 // Services
 import  { ConfigService,Config } from './services/config.service'
@@ -29,6 +32,9 @@ import  { ActionService } from './services/action.service'
 import  { RoleService } from './services/role.service'
 import  { ResourceService } from './services/resource.service'
 import  { UserService } from './services/user.service';
+import { RolesByActionsService } from './services/roles-by-actions.service';
+
+
 
 
 @NgModule({
@@ -53,7 +59,10 @@ import  { UserService } from './services/user.service';
     TableComponent,
     AuthenticationComponent,
     AuthorizationComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    CreateRolesByActionsComponent,
+    ListRolesByActionsComponent,
+    CallbackComponent
   ],
   exports: [
     AuthenticationComponent,
@@ -65,7 +74,8 @@ import  { UserService } from './services/user.service';
     RoleService,
     ResourceService,
     UserService,
-    ConfigService
+    ConfigService,
+    RolesByActionsService
   ]
 })
 export class SecurityModule {

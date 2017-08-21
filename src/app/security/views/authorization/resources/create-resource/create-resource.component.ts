@@ -14,7 +14,7 @@ export class CreateResourceComponent implements OnInit {
   private resources: Resource[]
 
   constructor(private resourceService: ResourceService) { 
-    this.resource =  <Resource>{}
+    this.reset()
   }
 
   ngOnInit() {
@@ -25,7 +25,7 @@ export class CreateResourceComponent implements OnInit {
           return {
             id: ele["id_resource"],
             resource: ele["resource1"]
-
+            
           }
         })
       })
@@ -33,8 +33,18 @@ export class CreateResourceComponent implements OnInit {
   }
 
   createResource(){
-    console.log("click",this.resource)
-    // this.resourceService.createResource(this.resource)
+    this.resource = {
+      id_resource: (this.resources.length + 1).toString(),
+      resource1: this.resource["resource1"],
+      parent: (this.resource["parent"]) ? this.resource["parent"] : this.resources.length + 1,
+      hereditary: (this.resource["hereditary"]) ? this.resource["hereditary"] : false
+    }
+    this.resourceService.createResource(this.resource)
+    this.reset()
+  }
+
+  reset(){
+    this.resource =  <Resource>{}
   }
 
 }
