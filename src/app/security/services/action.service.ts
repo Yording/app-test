@@ -6,15 +6,18 @@ import { ConfigService } from './config.service'
 @Injectable()
 export class ActionService {
     
+    // Propiedades
     private host: string
     private port: number
     
     constructor(configService: ConfigService){
+        // Configuracion Inicial
         var api = configService.getConfig["apiSecurity"]
         this.host = api["host"] || 'localhost'
         this.port = api["port"] || '3000'
     }
 
+    // Obtiene todas las actions de api Odata
     getActions():any {
       return fetch(`http://${this.host}:${this.port}/odata/actions`,{
          method: 'GET',
@@ -32,6 +35,7 @@ export class ActionService {
        })
     }
 
+    // Crear una nueva acción
     createAction(action: Action):void {
         fetch(`http://${this.host}:${this.port}/odata/actions`,{
           method: 'POST',

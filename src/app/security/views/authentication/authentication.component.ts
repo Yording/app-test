@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, } from '@angular/core';
 import { Router } from '@angular/router'
 
 // Components
-import { SignupComponent } from './signup/signup.component'
+import { LoginComponent } from './login/login.component'
 
 // Services
 import { UserService } from '../../services/user.service'
@@ -13,7 +13,7 @@ import { ConfigService } from '../../services/config.service'
   selector: 'security-authentication',
   templateUrl: './authentication.component.html',
   styleUrls: ['./authentication.component.css'],
-  viewProviders: [SignupComponent]
+  viewProviders: [LoginComponent]
 })
 export class AuthenticationComponent implements OnInit {
   
@@ -26,18 +26,20 @@ export class AuthenticationComponent implements OnInit {
     this.isLogged = this.userService.isAuthenticated()
     // Se inicializa un objeto para configurar el navbar para authentication
     this.menuOpt = {
-      logo: 'Empresa',
+      logo: this.configService.getConfig["logo"] || "logo",
       links: [
         { name: 'Login', href: 'authentication/login', module: 'authentication' },
       ]
     }
-    // console.log("",location.pathname,!this.isLogged)
-    if(!this.isLogged){
+    // console.log("",location.pathname,this.isLogged,localStorage.getItem('signup'))
+    if((location.pathname != "" && location.pathname != "/callback") && this.isLogged == false)
+    {
       this.router.navigate(['authentication'])
     }
-
-    
-    else if(this.router.url == '/'){
+    else if(location.pathname != "" && this.isLogged == true && localStorage.getItem('signup')){
+      this.router.navigate(['authentication/signup'])
+    }
+    else if(location.pathname != "" && this.isLogged == true && !localStorage.getItem('signup')){
       this.router.navigate([this.configService.getConfig["authentication"]["routeInitial"]])
     }
   }

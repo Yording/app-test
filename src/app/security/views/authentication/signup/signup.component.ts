@@ -59,6 +59,7 @@ export class SignupComponent implements OnInit {
     this.userService.createUser(this.user)
      .then(response => {
             if(response.ok){
+              localStorage.removeItem('signup')
               this.router.navigate([this.configService.getConfig["authentication"]["routeInitial"]])
             }
         })

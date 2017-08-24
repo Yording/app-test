@@ -8,8 +8,8 @@ import { Component, OnInit,OnChanges,Input } from '@angular/core';
 export class TableComponent implements OnInit, OnChanges {
 
   // Inputs
-   @Input() records: any[];
-   @Input() caption: string;
+   @Input() records: any[]; // Recibe los datos y encabezados para crear la tabla
+   @Input() caption: string; // un title ponerle a la tabla
    keys: string[];
 
   constructor() { }
@@ -18,6 +18,7 @@ export class TableComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
+    // Si no se envian registros no se realiza el mapping de las keys
     if(this.records != undefined){
       this.keys = Object.keys(this.records[0]);
     }

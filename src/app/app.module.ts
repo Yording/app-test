@@ -6,6 +6,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
 
+// // Servicios del módulo de seguridad
+// import { UserService } from './security/services/user.service';
+
 //config
 import { CONFIG } from './config/config'
 

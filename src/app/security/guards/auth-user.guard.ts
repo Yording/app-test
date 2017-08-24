@@ -11,6 +11,8 @@ export class AuthUserGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     
+      // Este guard sirve para impedir que un usuario que no se encuentre logueado 
+      // Posea privilegios sin aun estar authentificado.
       if(!this.userService.isAuthenticated()){
         return true
       }

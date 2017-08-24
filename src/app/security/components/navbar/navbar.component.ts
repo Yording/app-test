@@ -8,15 +8,20 @@ import { UserService } from '../../services/user.service'
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit, DoCheck {
+ 
+  // Propiedad que recibe las opciones enviadas como propiedad
   @Input() options: object
+
+  // Si esta logueado como Administrador del módulo
   private isLogged: boolean
+
+  // Si esta authentificado como usuario de la aplicacion
   private isAuthenticated: boolean
-  // private options: object
+
   constructor(private userService: UserService) {
   }
 
   ngOnInit() {
-    console.log(this.isAuthenticated)
   }
 
   // Revisa cada ves que encuentra un cambio en el componente

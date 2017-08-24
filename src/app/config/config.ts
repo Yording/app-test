@@ -1,5 +1,6 @@
 export const CONFIG:object = {
-    logo: "Empresa",
+    // Por defecto es logo
+    logo: "Empresa", 
     // Por defecto será localhost:3000
     apiSecurity:{
         host: 'localhost',
@@ -23,6 +24,7 @@ export const CONFIG:object = {
                 }
             ]
         },
+        // Configuración necesaria para el Auth0 y entrar con facebook
         configAuth0: {
             clientID: 'KwrIKkQyMkNsz0cRkCxZZU5isX8v7OJs',
             domain: 'yording.auth0.com',
@@ -30,6 +32,7 @@ export const CONFIG:object = {
         }
     },
     authorization: {
+        // Credenciales de administrador
         user: 'Yording', // por defecto Admin
         password: '123', // por defecto Admin2017*
         

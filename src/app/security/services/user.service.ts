@@ -18,6 +18,7 @@ export class UserService {
     private helper : JwtHelper = new JwtHelper();
 
     constructor(private configService: ConfigService, private router: Router){
+        // Configuraciones Iniciales
         var api = this.configService.getConfig["apiSecurity"]
         this.host = api["host"] || 'localhost'
         this.port = api["port"] || 3000
@@ -32,10 +33,14 @@ export class UserService {
         })
     }
 
+    // Se loguea con auth0
     public login(): void {
         this.auth0.authorize();
     }
 
+    // Manejador de las authenticacion con auth0
+    // este proceso se realiza inmediatamente el callback
+    // regresa la respuesta
     public handleAuthentication(): void {
         this.auth0.parseHash((err, authResult) => {
           if (authResult && authResult.accessToken && authResult.idToken) {
@@ -43,17 +48,20 @@ export class UserService {
             this.setSession(authResult);
 
             // Si el usuario ya esta registrado lo redireciona al componene initial
+            // Sino lo envia al signup
             this.getUser(this.userProfile()['id'])
                 .then(data => {
                     if(data != null){
                         this.router.navigate([this.configService.getConfig["authentication"]["routeInitial"]]);
                     }
                     else{
+                        localStorage.setItem('signup','true')
                         this.router.navigate(['/authentication/signup']);
                     }
                 })
             
           } else if (err) {
+              // Si existe algun error en la respuesta del callback lo reenvia a login
             this.router.navigate(['/authentication/login']);
             console.log(err);
           }
@@ -62,7 +70,6 @@ export class UserService {
 
     // Informacion obtenida en el pérfil de usuario de auth0
     public userProfile(): object{
-          // Set the time that the access token will expire at
         const decode = this.helper.decodeToken(localStorage.getItem('token'))
         const user = {
           email: decode.email,
@@ -76,18 +83,21 @@ export class UserService {
         return user
     }
 
+    // Se guardan las variables en el localstorage
     private setSession(authResult): void {
         localStorage.setItem('access_token', authResult.accessToken);
         localStorage.setItem('token', authResult.idToken);
     }
     
+    // Elimina del localstorage la información del usuario logueado
     public logout(): void {
         // Remove tokens and expiry time from localStorage
         localStorage.removeItem('token');
         localStorage.removeItem('user');
         localStorage.removeItem('access_token');
+        localStorage.removeItem('signup')
         // Go back to the home route
-        this.router.navigate(['/']);
+        this.router.navigate(['/authentication']);
     }
     
     public isAuthenticated(): boolean {

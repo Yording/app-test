@@ -24,7 +24,7 @@ export class AuthorizationComponent implements OnInit {
 
     // Se inicializa un objeto para configurar el navbar para la authorization
     this.menuOpt = {
-      logo: this.configService.getConfig["logo"],
+      logo: this.configService.getConfig["logo"] || "logo",
       links: [
         { name: 'Resources', href: 'authorization/create-resource', module: 'authorization'},
         { name: 'Actions', href: 'authorization/create-action', module: 'authorization'},
