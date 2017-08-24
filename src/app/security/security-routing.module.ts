@@ -19,6 +19,7 @@ import { CallbackComponent } from './components/callback/callback.component';
 
 // Guards
 import { AuthAdminGuard } from './guards/auth-admin.guard';
+import { AuthUserGuard } from './guards/auth-user.guard';
 
 
 const routes: Routes = [
@@ -26,7 +27,7 @@ const routes: Routes = [
   { path: 'authentication',
     children: [
        { path:'', pathMatch: 'full', redirectTo: 'login' },
-       { path: 'login', component: LoginComponent },
+       { path: 'login', component: LoginComponent, canActivate: [AuthUserGuard] },
        { path: 'signup', component: SignupComponent },
     ]
   },
@@ -54,6 +55,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers: [AuthAdminGuard]
+  providers: [AuthAdminGuard,AuthUserGuard]
 })
 export class SecurityRoutingModule { }

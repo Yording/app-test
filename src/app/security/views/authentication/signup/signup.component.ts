@@ -43,7 +43,7 @@ export class SignupComponent implements OnInit {
     // informacion obtenida
     keys.map(function(key){
       // Creo una propiedad para el objecto self.user con el valor recibido en las propiedad de userProfile
-      Object.defineProperty(self.user, key, {value: (self.userProfile[key] != undefined) ? self.userProfile[key] : null})
+      Object.defineProperty(self.user, key, {value: (self.userProfile[key] != undefined) ? self.userProfile[key] : null, writable:true, enumerable: true, configurable: true})
     })
 
   }
@@ -52,13 +52,20 @@ export class SignupComponent implements OnInit {
   }
 
   signup(){
-
+    // Se debe agregar el id del usuario
+    this.user["id_user"] = this.userProfile["id"].toString()
+    
+    // Registrar un nuevo usuario
     this.userService.createUser(this.user)
      .then(response => {
             if(response.ok){
               this.router.navigate([this.configService.getConfig["authentication"]["routeInitial"]])
             }
         })
+  }
+
+  cancel(){
+    this.userService.logout()
   }
 
 }

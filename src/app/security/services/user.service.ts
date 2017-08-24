@@ -39,10 +39,20 @@ export class UserService {
     public handleAuthentication(): void {
         this.auth0.parseHash((err, authResult) => {
           if (authResult && authResult.accessToken && authResult.idToken) {
-              
             window.location.hash = '';
             this.setSession(authResult);
-            this.router.navigate(['/authentication/signup']);
+
+            // Si el usuario ya esta registrado lo redireciona al componene initial
+            this.getUser(this.userProfile()['id'])
+                .then(data => {
+                    if(data != null){
+                        this.router.navigate([this.configService.getConfig["authentication"]["routeInitial"]]);
+                    }
+                    else{
+                        this.router.navigate(['/authentication/signup']);
+                    }
+                })
+            
           } else if (err) {
             this.router.navigate(['/authentication/login']);
             console.log(err);
@@ -84,10 +94,26 @@ export class UserService {
         return tokenNotExpired()
     }
 
-    public getUser(): any {
-
+    public getUser(id: number): any {
+        return fetch(`http://${this.host}:${this.port}/odata/users('${id}')`,{
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            if(response.ok){
+                return response.json()
+            }
+            return null
+        })
+        .catch(err => {
+            console.log(err)
+            throw err
+        })
     }
-    
+
     public getUsers(): any {
         return fetch(`http://${this.host}:${this.port}/odata/users`,{
             method: 'GET',
@@ -106,6 +132,7 @@ export class UserService {
     }
 
     public createUser(user:object) {
+        console.log(user)
         return fetch(`http://${this.host}:${this.port}/odata/users`,{
             method: 'POST',
             headers: {

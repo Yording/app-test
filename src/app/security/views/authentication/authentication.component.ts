@@ -31,13 +31,15 @@ export class AuthenticationComponent implements OnInit {
         { name: 'Login', href: 'authentication/login', module: 'authentication' },
       ]
     }
-    console.log(this.isLogged,this.router.url)
-    // if(!this.isLogged){
-    //   this.router.navigate(["authentication"])
-    // }
-    // else if(this.router.url == '/'){
-    //   this.router.navigate([this.configService.getConfig["authentication"]["routeInitial"]])
-    // }
+    // console.log("",location.pathname,!this.isLogged)
+    if(!this.isLogged){
+      this.router.navigate(['authentication'])
+    }
+
+    
+    else if(this.router.url == '/'){
+      this.router.navigate([this.configService.getConfig["authentication"]["routeInitial"]])
+    }
   }
 
   ngOnInit() {
