@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, DoCheck } from '@angular/core';
 
 import { UserService } from '../../services/user.service'
+import { ConfigService } from '../../services/config.service'
 
 @Component({
   selector: 'security-navbar',
@@ -17,8 +18,11 @@ export class NavbarComponent implements OnInit, DoCheck {
 
   // Si esta authentificado como usuario de la aplicacion
   private isAuthenticated: boolean
+  
+  private user: string
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private configService: ConfigService) {
+    this.user = this.configService.getConfig["authorization"]["user"]
   }
 
   ngOnInit() {
@@ -32,5 +36,8 @@ export class NavbarComponent implements OnInit, DoCheck {
     if(this.isAuthenticated !== this.userService.isAuthenticated()){
       this.isAuthenticated = this.userService.isAuthenticated()
     }
+  }
+  logout(){
+    this.userService.logoutAdmin()
   }
 }

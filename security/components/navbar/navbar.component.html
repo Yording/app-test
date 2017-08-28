@@ -13,6 +13,14 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown" *ngIf="(options.links[0].module == 'authorization' && isLogged)">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{user}} <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a (click)="logout()">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
       <ul class="nav navbar-nav navbar-right" *ngFor="let link of options.links">
         <li *ngIf="(link.module == 'authorization' && isLogged)  || (link.module == 'authentication' && !isAuthenticated)"><a routerLink="{{link.href}}">{{link.name}}</a></li>
       </ul>

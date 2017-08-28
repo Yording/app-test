@@ -100,6 +100,10 @@ export class UserService {
         this.router.navigate(['/authentication']);
     }
     
+    public logoutAdmin(): void {
+        localStorage.removeItem("admin")
+        this.router.navigate(['/authorization']);
+    }
     public isAuthenticated(): boolean {
         return tokenNotExpired()
     }
