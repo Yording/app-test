@@ -25,8 +25,8 @@ export class ListRolesByActionsComponent implements OnInit {
           this.roleByAction = response.map(function(ele){
             return {
               Id: ele["id_role_by_action"],
-              Role: ele["id_role"],
-              Action: ele["id_action"]
+              Role: ele["role"]["role1"],
+              Action: ele["action"]["action1"]
             }
           })
       });

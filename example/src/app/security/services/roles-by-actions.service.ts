@@ -6,15 +6,21 @@ export class RolesByActionsService {
 
     private host: string
     private port: number
+    private pathRoot: string
+    private querySelect: string = ""
+    private queryJoin: string = ""
 
     constructor(configService: ConfigService){
         var api = configService.getConfig["apiSecurity"]
         this.host = api["host"] || 'localhost'
         this.port = api["port"] || '3000'
+        this.pathRoot = `http://${this.host}:${this.port}/odata/rolesByActions`
     }
 
     getRolesByActions(): any {
-        return fetch(`http://${this.host}:${this.port}/odata/rolesByActions`,{
+        this.queryJoin = "expand=role,action"
+        this.querySelect = "select=role/id_role,role/role1,action/id_action,action/action1,id_role_by_action"
+        return fetch(`${this.pathRoot}?$${this.queryJoin}&$${this.querySelect}`,{
          method: 'GET',
           headers: {
             'Accept': 'application/json',

@@ -30,9 +30,9 @@ export class ListPermissionsComponent implements OnInit {
           this.permissions = response.map(function(ele){
             return {
               Id: ele["id_permission"],
-              User: ele["id_user"],
-              Role: ele["id_role"],
-              Resource: ele["id_resource"]
+              User: ele["user"]["name"],
+              Role: ele["role"]["role1"],
+              Resource: ele["resource"]["resource1"]
             }
           })
       });

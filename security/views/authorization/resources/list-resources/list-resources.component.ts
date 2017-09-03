@@ -30,7 +30,7 @@ export class ListResourcesComponent implements OnInit {
             return {
               Id: ele["id_resource"],
               Resource: ele["resource1"],
-              Parent: ele["parent"],
+              Parent: ele["resource2"]["resource1"],
               Hereditary: ele["hereditary"]
             }
           })
